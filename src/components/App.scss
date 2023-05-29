@@ -1,0 +1,95 @@
+$color_main: rgb(255, 197, 208);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(255,179,193,1) 0%, rgba(221,106,106,1) 100%);
+}
+
+.game {
+  position: relative;
+  width: 50vw;
+  max-width: 1200px;
+  min-width: 750px;
+  height: 50vh;
+  min-height: 370px;
+  border-radius: 15px;
+  box-shadow: 16px 18px 26px 14px rgba(235, 203, 238, 0.15);
+}
+
+.roll_button {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  button {
+    padding: 15px 50px;
+    color: #fff;
+    background-color: $color_main;
+    border: none;
+    font-size: 20px;
+    border-radius: 0 0 15px 15px; 
+    outline: none;
+    transition: .3s;
+    &:hover {
+      outline: none;
+      background: #50514F;
+      cursor: pointer;
+      transform: translateY(15px); 
+    }
+    &:active {
+      outline: none;
+      background: #50514F;
+      cursor: pointer;
+      transform: translateY(15px); 
+    }
+  }
+}
+
+.players {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.player {
+  flex: auto;
+  width: 49%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #fdf2fa;
+  font-size: 30px;
+  line-height: 1.25em;
+
+  &_name {
+    font-size: 1.25em;
+  }
+  &_current {
+    font-size: 1.25em;
+  }
+  &_score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color_main;
+    width: 50%;
+    height: 50%;
+    max-height: 200px;
+    border-radius: 15px;
+  }
+}
