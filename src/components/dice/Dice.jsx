@@ -1,9 +1,9 @@
 import React from "react";
 import './Dice.scss'
 
-function Dice () {
+function Dice ({currentSideDice}) {
   return (
-    <div id="dice" className="dice dice-one">
+    <div id="dice" className={`dice show-${currentSideDice}`}>
       <div id="dice-side-one" className="side one">
         <div className="dot one-1"></div>
       </div>
