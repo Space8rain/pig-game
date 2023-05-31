@@ -9,7 +9,7 @@ function App() {
 
   const [currentSideDice, setCurrentSideDice] = React.useState(1);
 
-  const [isWinner, setIsWinner] = React.useState(true);
+  const [isWinner, setIsWinner] = React.useState(false);
 
   const [players, setPlayers] = React.useState(
     [
