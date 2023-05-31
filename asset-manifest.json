@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pig-game/static/css/main.3fa3caf1.css",
-    "main.js": "/pig-game/static/js/main.d87df2a7.js",
+    "main.css": "/pig-game/static/css/main.413c2315.css",
+    "main.js": "/pig-game/static/js/main.b52e4da3.js",
     "static/js/787.37440359.chunk.js": "/pig-game/static/js/787.37440359.chunk.js",
     "index.html": "/pig-game/index.html",
-    "main.3fa3caf1.css.map": "/pig-game/static/css/main.3fa3caf1.css.map",
-    "main.d87df2a7.js.map": "/pig-game/static/js/main.d87df2a7.js.map",
+    "main.413c2315.css.map": "/pig-game/static/css/main.413c2315.css.map",
+    "main.b52e4da3.js.map": "/pig-game/static/js/main.b52e4da3.js.map",
     "787.37440359.chunk.js.map": "/pig-game/static/js/787.37440359.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fa3caf1.css",
-    "static/js/main.d87df2a7.js"
+    "static/css/main.413c2315.css",
+    "static/js/main.b52e4da3.js"
   ]
 }
