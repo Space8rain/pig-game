@@ -9,6 +9,8 @@ function App() {
 
   const [currentSideDice, setCurrentSideDice] = React.useState(1);
 
+  const [isWinner, setIsWinner] = React.useState(true);
+
   const [players, setPlayers] = React.useState(
     [
       {
@@ -37,6 +39,7 @@ function App() {
     } else {
       copyPlayers[currentPlayerId].current += random;
       setPlayers(copyPlayers);
+      checkWinner()
     };
   };
 
@@ -88,9 +91,22 @@ function App() {
   };
 
   function checkWinner() {
-    
+    if (players[currentPlayerId].score + players[currentPlayerId].current >= 100) {
+      setIsWinner(true);
+    }
   }
 
+  function resetScore() {
+    const copyPlayers = players.map((player) => {
+      return {
+        ...player,
+        current: 0,
+        score: 0,
+      }
+    });
+    setPlayers(copyPlayers);
+    setIsWinner(false)
+  }
 
   return (
     <div className="App">
@@ -123,6 +139,15 @@ function App() {
             <button disabled={players.length === 2}  onClick={removePlayer}>-</button>
           </div>
         </div>
+
+        {isWinner && <div className="winner">
+          <div className="overlay">
+            <div className="banner">
+              <h2 className="player">{`Winner ${players[currentPlayerId].name} !!!`}</h2>
+              <button onClick={resetScore}>Retry</button>
+            </div>
+          </div>
+        </div>}
     </div>
   );
 }
