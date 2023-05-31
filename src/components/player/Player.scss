@@ -11,7 +11,18 @@
   font-size: 30px;
   line-height: 1.25em;
 
+  .active {
+    width: .5em;
+    height: .5em;
+    margin-left: .5em;
+    border-radius: 50%;
+    background-color: $color_main;
+    box-shadow: inset 2px 2px #e0658e;
+  }
+
   &_name {
+    display: flex;
+    align-items: center;
     font-size: 1.25em;
   }
   &_current {

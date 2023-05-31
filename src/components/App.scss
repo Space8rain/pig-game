@@ -1,9 +1,51 @@
 @import './const';
 
+%player-button-type {
+  z-index: -1;
+  position: absolute;
+  top: 20px;
+  right: -60px;
+  button {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 72px;
+    width: 75px;
+    font-family: inherit;
+    font-size: 32px;
+    border: 3px solid #fdf2fa;
+    border-radius:  0 15px 15px 0;
+    background-color: $color_main;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(5px); 
+      background: $color_second;
+      font-size: 40px;
+    }
+
+    &:disabled {
+      cursor: default;
+      font-size: 32px;
+      background: $color_main;
+    }
+
+    &:active {
+      transform: translateX(-5px); 
+    }
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.App {
+  position: relative;
 }
 
 body {
@@ -16,6 +58,7 @@ body {
 
 .game {
   position: relative;
+  z-index: 2;
   width: 50vw;
   max-width: 1200px;
   min-width: 750px;
@@ -25,37 +68,6 @@ body {
   box-shadow: 16px 18px 26px 14px rgba(235, 203, 238, 0.15);
 }
 
-.roll_button {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  button {
-    padding: 20px 75px;
-    font-family: inherit;
-    font-size: 32px;
-    color: #000;
-    background-color: $color_main;
-    border: none;
-    border-radius: 0 0 15px 15px; 
-    outline: none;
-    transition: .3s;
-    &:hover {
-      outline: none;
-      background: $color_second;
-      cursor: pointer;
-      // transform: translateY(15px); 
-    }
-    &:active {
-      outline: none;
-      background: $color_second;
-      cursor: pointer;
-      padding: 17px 60px;
-    }
-  }
-}
-
 .players {
   display: flex;
   gap: 5px;
@@ -63,4 +75,85 @@ body {
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
+}
+
+.roll_button {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  button {
+    cursor: pointer;
+    padding: 20px 75px;
+    font-family: inherit;
+    font-size: 32px;
+    color: #000;
+    background-color: $color_main;
+    border: none;
+    border-left: 3px solid #fdf2fa;
+    border-right: 3px solid #fdf2fa;
+    border-bottom: 3px solid #fdf2fa;
+    border-radius: 0 0 15px 15px; 
+    outline: none;
+    transition: .3s;
+    &:hover {
+      background: $color_second;
+      // transform: translateY(15px); 
+    }
+    &:active {
+      padding: 17px 60px;
+    }
+  }
+}
+
+.rules_button {
+  position: absolute;
+  z-index: -1;
+  cursor: pointer;
+  display: flex;
+  top: 20px;
+  transition: .5s ease-in-out .3s;
+
+  p {
+    width: 49.7%;
+    background-color: $color_main;
+    border: 3px solid #fdf2fa;
+    border-radius:  0 15px 0 0;
+    padding: 5px 10px 30px;
+    font-size: 14px;
+
+    &::before {
+      content: '?';
+      position: absolute;
+      top: 0;
+      left: -80px;
+      padding: 10px 30px;
+      font-family: inherit;
+      font-size: 32px;
+      background-color: $color_main;
+      border-left: 3px solid #fdf2fa;
+      border-top: 3px solid #fdf2fa;
+      border-bottom: 3px solid #fdf2fa;
+      border-radius: 15px 0 0 15px;
+      outline: none;
+    }
+
+  }
+
+  &:hover {
+    transform: translateY(-100%); 
+    transition: 1s ease-in-out .1s;
+  }
+}
+
+.add_button {
+  @extend %player-button-type;
+}
+
+.remove_button {
+  @extend %player-button-type;
+  button {
+    top: 90px;
+  }
 }
