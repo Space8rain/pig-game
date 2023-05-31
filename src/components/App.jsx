@@ -87,6 +87,10 @@ function App() {
     setPlayers(copyPlayers);
   };
 
+  function checkWinner() {
+    
+  }
+
 
   return (
     <div className="App">
