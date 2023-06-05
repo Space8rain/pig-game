@@ -82,12 +82,14 @@ function App() {
       }
     )
     setPlayers(copyPlayers);
+    resetScore();
   };
 
   function removePlayer () {
     const copyPlayers = [...players];
     copyPlayers.pop();
     setPlayers(copyPlayers);
+    resetScore();
   };
 
   function checkWinner() {
