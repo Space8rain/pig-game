@@ -51,18 +51,22 @@ function App() {
     switchActivePlayer();
   }
 
+  function resetActivePlayer() {
+    const copyPlayers = [...players];
+
+    copyPlayers[currentPlayerId].isActive = false;
+    copyPlayers[0].isActive = true;
+
+    setPlayers(copyPlayers);
+    setCurrentPLayerId(0);
+  }
+
   function switchActivePlayer () {
     const nextPlayerId = currentPlayerId + 1;
     const copyPlayers = [...players];
 
-    if (nextPlayerId > copyPlayers.length - 1) {
-      copyPlayers[currentPlayerId].isActive = false;
-      copyPlayers[0].isActive = true;
-  
-      setPlayers(copyPlayers);
-      setCurrentPLayerId(0);
-
-    } else {
+    if (nextPlayerId > copyPlayers.length - 1) {resetActivePlayer()} 
+    else {
       copyPlayers[currentPlayerId].isActive = false;
       copyPlayers[nextPlayerId].isActive = true;
   
@@ -72,31 +76,33 @@ function App() {
   };
 
   function addPlayer () {
-    const copyPlayers = [...players];
+    let copyPlayers = [...players];
+    copyPlayers.forEach((player) => {
+      player.current = 0;
+      player.score = 0;
+    });
     copyPlayers.push(
       {
         name: `Player ${copyPlayers.length + 1}`,
         current: 0,
         score: 0,
         isActive: false,
-      }
-    )
+      });
     setPlayers(copyPlayers);
-    resetScore();
   };
 
   function removePlayer () {
-    const copyPlayers = [...players];
+    let copyPlayers = [...players];
     copyPlayers.pop();
+    resetActivePlayer();
     setPlayers(copyPlayers);
-    resetScore();
   };
 
   function checkWinner() {
     if (players[currentPlayerId].score + players[currentPlayerId].current >= 100) {
       setIsWinner(true);
     }
-  }
+  };
 
   function resetScore() {
     const copyPlayers = players.map((player) => {
@@ -108,7 +114,7 @@ function App() {
     });
     setPlayers(copyPlayers);
     setIsWinner(false)
-  }
+  };
 
   return (
     <div className="App">
