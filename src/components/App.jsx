@@ -35,7 +35,7 @@ function App() {
     if (random === 1) {
       copyPlayers[currentPlayerId].current = 0;
       setPlayers(copyPlayers);
-      switchActivePlayer();
+      nextActivePlayer();
     } else {
       copyPlayers[currentPlayerId].current += random;
       setPlayers(copyPlayers);
@@ -48,7 +48,7 @@ function App() {
     copyPlayers[currentPlayerId].score += players[currentPlayerId].current;
     copyPlayers[currentPlayerId].current = 0;
     setPlayers(copyPlayers);
-    switchActivePlayer();
+    nextActivePlayer();
   }
 
   function resetActivePlayer() {
@@ -61,7 +61,7 @@ function App() {
     setCurrentPLayerId(0);
   }
 
-  function switchActivePlayer () {
+  function nextActivePlayer () {
     const nextPlayerId = currentPlayerId + 1;
     const copyPlayers = [...players];
 
@@ -76,14 +76,16 @@ function App() {
   };
 
   function addPlayer () {
-    let copyPlayers = [...players];
-    copyPlayers.forEach((player) => {
-      player.current = 0;
-      player.score = 0;
-    });
+    const copyPlayers = players.map((player) => {
+      return {
+        ...player,
+        current: 0,
+        score: 0,
+      }
+    })
     copyPlayers.push(
       {
-        name: `Player ${copyPlayers.length + 1}`,
+        name: `Player ${players.length + 1}`,
         current: 0,
         score: 0,
         isActive: false,
